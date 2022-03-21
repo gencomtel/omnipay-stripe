@@ -77,6 +77,26 @@ class UpdateCustomerRequest extends AbstractRequest
     {
         $this->setParameter('source', $value);
     }
+    /**
+     * Get the Default invoice settings for this customer.
+     *
+     * @return string
+     */
+    public function getInvoiceSettings()
+    {
+        return $this->getParameter('invoice_settings');
+    }
+
+    /**
+     * Sets the Default invoice settings for this customer.
+     *
+     * @param string $value
+     * @return CreateCustomerRequest provides a fluent interface.
+     */
+    public function setInvoiceSettings($value)
+    {
+        $this->setParameter('invoice_settings', $value);
+    }
 
     /**
      * Get the customer's def source.
@@ -123,6 +143,9 @@ class UpdateCustomerRequest extends AbstractRequest
 
         if ($this->getSource()) {
             $data['source'] = $this->getSource();
+        }
+        if ($this->getInvoiceSettings()) {
+            $data['invoice_settings'] = $this->getInvoiceSettings();
         }
 
 
